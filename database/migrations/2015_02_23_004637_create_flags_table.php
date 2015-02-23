@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContriesTable extends Migration {
+class CreateFlagsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,11 @@ class CreateContriesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('countries', function(Blueprint $table)
+		Schema::create('flags', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name');
-			$table->integer('population');
-			$table->integer('language_id')->unsigned();
-			$table->foreign('language_id')->references('id')->on('languages');
+			$table->string('description', 250);
+			$table->softDeletes();
 			$table->timestamps();
 		});
 	}
@@ -30,7 +28,7 @@ class CreateContriesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('countries');
+		Schema::drop('flags');
 	}
 
 }
