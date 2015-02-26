@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder {
 		App\Client::truncate();
 
 		$this->call('ClientsTableSeeder');
+		$this->call('FlagsTableSeeder');
 	}
 
 }
